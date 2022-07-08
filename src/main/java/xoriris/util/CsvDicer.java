@@ -158,7 +158,7 @@ public class CsvDicer implements IMatrixData {
      * @return Observations matrix
      */
     @Override
-    public double[][] getObservations() {
+    public double[][] getReals() {
         return observations;
     }
 
