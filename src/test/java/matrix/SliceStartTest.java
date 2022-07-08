@@ -1,4 +1,4 @@
-package matrix;/*
+/*
  * Copyright (c) Ron Coleman
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -9,13 +9,13 @@ package matrix;/*
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+package matrix;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import xoriris.matrix.IMatrixOp;
 import java.util.stream.IntStream;
-
 
 /**
  * Tests slice from start of matrix.
@@ -68,12 +68,13 @@ public class SliceStartTest {
      * Tests that slice and transpose do not commute.
      */
     @Test
-    public void testCommutability() {
+    public void testCommutable() {
         double[][] sliceTranspose = mop.transpose(mop.slice(TEST_MATRIX,0,2));
         mop.print(this.getClass().getName()+" slice, transpose",sliceTranspose);
 
         double[][] transposeSlice = mop.slice(mop.transpose(TEST_MATRIX),0,2);
         mop.print(this.getClass().getName()+" slice, transpose",transposeSlice);
+
         assert(sliceTranspose.length != transposeSlice.length);
     }
 }
