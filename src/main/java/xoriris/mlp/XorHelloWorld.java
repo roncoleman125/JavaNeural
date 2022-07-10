@@ -1,4 +1,4 @@
-package xoriris.xor;
+package xoriris.mlp;
 
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
@@ -9,6 +9,8 @@ import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.back.Backpropagation;
 import xoriris.util.EncogHelper;
+
+import java.util.Date;
 
 /**
  * XOR: This example is essentially the "Hello World" of neural network
@@ -59,6 +61,8 @@ public class XorHelloWorld {
      * @param args No arguments are used.
      */
     public static void main(final String args[]) {
+        System.out.println("started: "+new Date());
+
         // Instantiate the network
         BasicNetwork network = new BasicNetwork();
 
@@ -101,6 +105,8 @@ public class XorHelloWorld {
 
         } while (training.getError() > TOLERANCE && epoch < EncogHelper.MAX_EPOCHS);
 
+        EncogHelper.log(epoch, training,true);
+
         training.finishTraining();
 
         EncogHelper.log(epoch, training,true);
@@ -108,5 +114,7 @@ public class XorHelloWorld {
         EncogHelper.describe(network);
 
         Encog.getInstance().shutdown();
+
+        System.out.println("finished: "+new Date());
     }
 }
