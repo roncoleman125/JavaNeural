@@ -66,13 +66,13 @@ public class CsvDicer implements IMatrixData {
      * We need this to convert from string iris species names to numerical values.
      * See https://www.baeldung.com/java-initialize-hashmap
      */
-    static Map<String, Integer> species2Cat = Stream.of(new Object[][]{
+    public static Map<String, Integer> species2Cat = Stream.of(new Object[][]{
             {"setosa", 0},
             {"virginica", 1},
             {"versicolor", 2}
     }).collect(Collectors.toMap(row -> (String) row[0], row -> (Integer) row[1]));
 
-    static Map<Integer,String> cat2Species =
+    public static Map<Integer,String> cat2Species =
             species2Cat.keySet().stream().collect(Collectors.toMap(key -> (Integer) species2Cat.get(key), key -> key));
 
     /** Path to the CSV file */
