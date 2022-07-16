@@ -14,7 +14,7 @@ package matrix;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import xoriris.matrix.IMatrixOp;
+import xoriris.matrix.IMop;
 import java.util.stream.IntStream;
 
 /**
@@ -26,7 +26,7 @@ import java.util.stream.IntStream;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SliceStartTest {
     // TODO: instantiate a concrete IMatrixOp here
-    IMatrixOp mop = null;
+    IMop mop = null;
 
     // Matrix is this size to anticipate start, mid, end testing.
     final double[][] TEST_MATRIX = {

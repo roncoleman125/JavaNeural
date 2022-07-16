@@ -1,3 +1,3 @@
-package xoriris.matrix;
+package xoriris.mnist;
 
 record MDigit(int[] pixels, int label) {}

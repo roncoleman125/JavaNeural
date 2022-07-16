@@ -1,8 +1,11 @@
-package xoriris.matrix;
+package xoriris.mnist;
 
 import java.io.IOException;
 
-public interface IMDataFactory {
+/**
+ * Interface
+ */
+public interface IMLoader {
     public MDigit[] getDigits() throws IOException;
     public int getPixelsMagic();
     public int getLabelsMagic();

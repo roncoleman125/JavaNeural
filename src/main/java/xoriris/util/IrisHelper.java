@@ -29,7 +29,6 @@ import de.unknownreality.dataframe.column.StringColumn;
 import de.unknownreality.dataframe.csv.CSVReader;
 import de.unknownreality.dataframe.csv.CSVReaderBuilder;
 import de.unknownreality.dataframe.transform.ColumnDataFrameTransform;
-import xoriris.matrix.IMatrixData;
 
 import java.io.File;
 import java.util.Map;
@@ -42,7 +41,7 @@ import java.util.stream.Stream;
  * @see <a href="https://github.com/nRo/DataFrame>DataFrame</a>
  * @author Ron.Coleman
  */
-public class CsvDicer implements IMatrixData {
+public class IrisHelper {
     public static String[] COL_NAMES = {
             "Sepal Length",
             "Sepal Width",
@@ -54,7 +53,7 @@ public class CsvDicer implements IMatrixData {
     /**
      * Names by which we refer to the columns, not necessarily the names in the CSV file.
      */
-    static String[] COL_SHORT_NAMES = {
+    public static String[] COL_SHORT_NAMES = {
             "SL",
             "SW",
             "PL",
@@ -75,30 +74,19 @@ public class CsvDicer implements IMatrixData {
     public static Map<Integer,String> cat2Species =
             species2Cat.keySet().stream().collect(Collectors.toMap(key -> (Integer) species2Cat.get(key), key -> key));
 
-    /** Path to the CSV file */
-    String path;
-
     /** Used to load the data */
-    DataFrame frame;
+    static DataFrame frame;
 
     /** Actual iris observations in "diced" numerical form */
-    double[][] observations;
+    static double[][] observations;
 
-    /**
-     * Constructor
-     * @param path Path to csv file
-     */
-    public CsvDicer(String path) {
-        this.path = path;
-    }
-
-    public double[][] dice() {
-        return dice(true);
+    public static double[][] load(String path) {
+        return load(path,true);
     }
     /**
      * Loads the iris data from the CSV file.
      */
-    public double[][] dice(boolean shuffle) {
+    public static double[][] load(String path,boolean shuffle) {
         // Id,Sepal Length,Sepal Width,Petal Length,Petal Width,Species
         CSVReader csvReader = CSVReaderBuilder.create()
                 .containsHeader(true)
@@ -126,7 +114,7 @@ public class CsvDicer implements IMatrixData {
     /**
      * Populates the observation array from the frame.
      */
-    protected void populate() {
+    protected static void populate() {
         int numCols = frame.getColumns().size();
         int numRows = frame.getRows().size();
 
@@ -146,7 +134,7 @@ public class CsvDicer implements IMatrixData {
      * Gets number of observations
      * @return Number of observations
      */
-    public int getNumObservations() {
+    public static int getNumObservations() {
         if(frame == null || observations == null)
             return 0;
 
@@ -157,19 +145,12 @@ public class CsvDicer implements IMatrixData {
      * Gets the observations as a 2D matrix.
      * @return Observations matrix
      */
-    @Override
-    public double[][] getReals() {
+    public static double[][] getObservations() {
         return observations;
     }
 
-    @Override
-    public int getNumColumns() {
+    public static int getNumColumns() {
         return observations.length;
-    }
-
-    @Override
-    public int getNumRows() {
-        return observations[0].length;
     }
 
     /**
@@ -191,14 +172,13 @@ public class CsvDicer implements IMatrixData {
      * @param args Command line args (not used)
      */
     public static void main(String[] args) {
-        CsvDicer csvDicer = new CsvDicer("data/iris.csv");
-        double[][] observations = csvDicer.dice();
+        double[][] observations = IrisHelper.load("data/iris.csv");
 
-        int numRows = csvDicer.getNumObservations();
-        int numCols = csvDicer.getNumColumns();
+        int numRows = IrisHelper.getNumObservations();
+        int numCols = IrisHelper.getNumColumns();
 
         System.out.printf("%3s ","#");
-        Stream.of(CsvDicer.COL_SHORT_NAMES).forEach(name -> System.out.printf("%3s ",name));
+        Stream.of(IrisHelper.COL_SHORT_NAMES).forEach(name -> System.out.printf("%3s ",name));
         System.out.println("");
         IntStream.range(0, numRows).forEach(row -> {
             System.out.printf("%3d ", row);
