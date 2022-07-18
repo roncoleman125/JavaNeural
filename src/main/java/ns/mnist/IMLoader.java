@@ -1,6 +1,4 @@
-package xoriris.mnist;
-
-import java.io.IOException;
+package ns.mnist;
 
 /**
  * Interface to load the MNIST data.

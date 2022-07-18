@@ -1,4 +1,4 @@
-package xoriris.util;
+package ns.util;
 
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataPair;

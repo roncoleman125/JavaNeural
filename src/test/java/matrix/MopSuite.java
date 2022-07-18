@@ -12,6 +12,7 @@ import org.junit.runners.Suite;
  */
 @Suite.SuiteClasses({
         SliceStartTest.class,
+        CommuteTest.class,
 })
 
 public class MopSuite {}

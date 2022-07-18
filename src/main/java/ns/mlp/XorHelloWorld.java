@@ -1,4 +1,4 @@
-package xoriris.mlp;
+package ns.mlp;
 
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
@@ -8,7 +8,7 @@ import org.encog.ml.train.BasicTraining;
 import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.back.Backpropagation;
-import xoriris.util.EncogHelper;
+import ns.util.EncogHelper;
 
 import java.util.Date;
 

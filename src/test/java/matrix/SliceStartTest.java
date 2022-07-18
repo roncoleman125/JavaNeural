@@ -14,18 +14,17 @@ package matrix;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import xoriris.matrix.IMop;
+import ns.matrix.IMop;
 import java.util.stream.IntStream;
 
 /**
  * Tests slice from start of matrix.
  * @author Ron.Coleman
- * @see <a href="https://www.softwaretestinghelp.com/juni-test-execution-order/">JUnit Test Execution Order</a>
  */
 //@FixMethodOrder(MethodSorters.DEFAULT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SliceStartTest {
-    // TODO: instantiate a concrete IMatrixOp here
+    // TODO: instantiate a concrete IMop here
     IMop mop = null;
 
     // Matrix is this size to anticipate start, mid, end testing.
@@ -62,19 +61,5 @@ public class SliceStartTest {
         });
 
         mop.print(this.getClass().getName()+" slice",slice);
-    }
-
-    /**
-     * Tests that slice and transpose do not commute.
-     */
-    @Test
-    public void testCommutable() {
-        double[][] sliceTranspose = mop.transpose(mop.slice(TEST_MATRIX,0,2));
-        mop.print(this.getClass().getName()+" slice, transpose",sliceTranspose);
-
-        double[][] transposeSlice = mop.slice(mop.transpose(TEST_MATRIX),0,2);
-        mop.print(this.getClass().getName()+" slice, transpose",transposeSlice);
-
-        assert(sliceTranspose.length != transposeSlice.length);
     }
 }

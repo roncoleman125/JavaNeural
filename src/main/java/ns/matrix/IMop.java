@@ -1,4 +1,4 @@
-package xoriris.matrix;
+package ns.matrix;
 
 public interface IMop {
     double[][] slice(double[][] src,int startRow,int endRow);
