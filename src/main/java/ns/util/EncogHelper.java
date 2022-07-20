@@ -120,19 +120,19 @@ public class EncogHelper {
      * @param train Training results
      * @param done  True if the training is done
      */
-    public static void log(int epoch, BasicTraining train, boolean done) {
+    public static void log(int epoch, double error, boolean sameExceeded, boolean done) {
         // Report only the header
         if (epoch == 0)
             System.out.printf("%8s %6s\n", "epoch", "error");
 
         else if (epoch == 1 || (!done && (epoch % LOG_FREQUENCY) == 0)) {
-            System.out.printf("%8d %6.4f\n", epoch, train.getError());
+            System.out.printf("%8d %6.4f\n", epoch, error);
         }
         // Report only if we haven't just reported
         else if (done && (epoch % LOG_FREQUENCY) != 0)
-            System.out.printf("%8d %6.4f\n", epoch, train.getError());
+            System.out.printf("%8d %6.4f\n", epoch, error);
 
-        if (epoch >= MAX_EPOCHS && done)
+        if (sameExceeded || epoch >= MAX_EPOCHS && done)
             System.out.println("--- DID NOT CONVERGE!");
     }
 }

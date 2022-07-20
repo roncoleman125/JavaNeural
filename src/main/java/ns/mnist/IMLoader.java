@@ -14,7 +14,7 @@ public interface IMLoader {
      * Gets the pixel and label data in row-major order.
      * @return Data in row-major order.
      */
-    public double[][] load();
+    public MDigit[] load();
 
     /**
      * Gets the pixel magic number.
