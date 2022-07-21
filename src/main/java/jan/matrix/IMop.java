@@ -1,4 +1,4 @@
-package ns.matrix;
+package jan.matrix;
 
 public interface IMop {
     double[][] slice(double[][] src,int startRow,int endRow);

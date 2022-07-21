@@ -21,7 +21,7 @@
  * and trademarks visit:
  * http://www.heatonresearch.com/copyright
  */
-package ns.rnn;
+package jan.rnn;
 
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;

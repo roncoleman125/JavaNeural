@@ -1,4 +1,4 @@
-package ns.mlp;
+package jan.mlp;
 
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
@@ -7,11 +7,9 @@ import org.encog.ml.data.basic.BasicMLDataSet;
 import org.encog.ml.train.BasicTraining;
 import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
-import org.encog.neural.networks.training.propagation.back.Backpropagation;
-import ns.util.EncogHelper;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
-
-import java.util.Date;
+import jan.util.EncogHelper;
+import static jan.util.EncogHelper.*;
 
 /**
  * XOR: This example is essentially the "Hello World" of neural network
@@ -38,9 +36,6 @@ public class XorHelloWorld {
      * */
     public final static double LEARNING_RATE = 0.25;
     public final static double LEARNING_MOMENTUM = 0.25;
-
-    /** Error tolerance: 1% */
-    public final static double TOLERANCE = 0.01;
 
     /** Inputs necessary for XOR. */
     public static double XOR_INPUTS[][] = {
@@ -100,7 +95,7 @@ public class XorHelloWorld {
         double error = 0.0;
 
         int sameCount = 0;
-        final int MAX_SAME_COUNT = 5*EncogHelper.LOG_FREQUENCY;
+        final int MAX_SAME_COUNT = 5*LOG_FREQUENCY;
 
         EncogHelper.log(epoch, error,false, false);
         do {
@@ -117,16 +112,16 @@ public class XorHelloWorld {
             else
                 sameCount++;
 
-            if(sameCount >= MAX_SAME_COUNT)
+            if(sameCount > MAX_SAME_COUNT)
                 break;
 
             EncogHelper.log(epoch, error,false,false);
 
-        } while (error > TOLERANCE && epoch < EncogHelper.MAX_EPOCHS);
+        } while (error > TOLERANCE && epoch < MAX_EPOCHS);
 
         training.finishTraining();
 
-        EncogHelper.log(epoch, error,sameCount >= MAX_SAME_COUNT, true);
+        EncogHelper.log(epoch, error,sameCount > MAX_SAME_COUNT, true);
         EncogHelper.report(trainingSet, network);
         EncogHelper.describe(network);
 

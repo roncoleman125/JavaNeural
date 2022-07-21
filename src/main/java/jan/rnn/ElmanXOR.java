@@ -1,4 +1,4 @@
-package ns.rnn;
+package jan.rnn;
 
 /*
  * Encog(tm) Java Examples v3.4

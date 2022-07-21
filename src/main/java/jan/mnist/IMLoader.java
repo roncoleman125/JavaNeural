@@ -1,4 +1,4 @@
-package ns.mnist;
+package jan.mnist;
 
 /**
  * Interface to load the MNIST data.

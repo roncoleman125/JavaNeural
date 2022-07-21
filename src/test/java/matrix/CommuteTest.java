@@ -1,6 +1,6 @@
 package matrix;
 
-import ns.matrix.IMop;
+import jan.matrix.IMop;
 import org.junit.Test;
 
 /**

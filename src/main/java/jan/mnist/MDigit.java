@@ -1,4 +1,4 @@
-package ns.mnist;
+package jan.mnist;
 
 /**
  * Container of MNIST digits
