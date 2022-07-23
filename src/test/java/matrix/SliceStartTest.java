@@ -14,7 +14,7 @@ package matrix;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import jan.matrix.IMop;
+import neural.matrix.IMop;
 import java.util.stream.IntStream;
 
 /**

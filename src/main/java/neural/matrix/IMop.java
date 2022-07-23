@@ -1,4 +1,4 @@
-package jan.matrix;
+package neural.matrix;
 
 public interface IMop {
     double[][] slice(double[][] src,int startRow,int endRow);

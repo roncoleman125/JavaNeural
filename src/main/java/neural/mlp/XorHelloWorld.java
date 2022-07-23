@@ -1,4 +1,4 @@
-package jan.mlp;
+package neural.mlp;
 
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
@@ -8,8 +8,8 @@ import org.encog.ml.train.BasicTraining;
 import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
-import jan.util.EncogHelper;
-import static jan.util.EncogHelper.*;
+import neural.util.EncogHelper;
+import static neural.util.EncogHelper.*;
 
 /**
  * XOR: This example is essentially the "Hello World" of neural network

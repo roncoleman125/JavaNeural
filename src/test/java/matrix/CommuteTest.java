@@ -1,6 +1,6 @@
 package matrix;
 
-import jan.matrix.IMop;
+import neural.matrix.IMop;
 import org.junit.Test;
 
 /**

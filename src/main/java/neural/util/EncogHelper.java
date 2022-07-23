@@ -1,4 +1,4 @@
-package jan.util;
+package neural.util;
 
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataPair;
@@ -152,7 +152,7 @@ public class EncogHelper {
 
         if(done && error < TOLERANCE)
             System.out.println("--- CONVERGED!");
-        else if(sameExceeded || epoch >= MAX_EPOCHS && done)
+        else if((sameExceeded || epoch >= MAX_EPOCHS) && done)
             System.out.println("--- DID NOT CONVERGE!");
     }
 }

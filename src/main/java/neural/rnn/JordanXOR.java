@@ -1,5 +1,3 @@
-package jan.rnn;
-
 /*
  * Encog(tm) Java Examples v3.4
  * http://www.heatonresearch.com/encog/
@@ -23,6 +21,8 @@ package jan.rnn;
  * and trademarks visit:
  * http://www.heatonresearch.com/copyright
  */
+package neural.rnn;
+
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
 import org.encog.ml.CalculateScore;
@@ -35,28 +35,30 @@ import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.training.TrainingSetScore;
 import org.encog.neural.networks.training.anneal.NeuralSimulatedAnnealing;
 import org.encog.neural.networks.training.propagation.back.Backpropagation;
-import org.encog.neural.pattern.ElmanPattern;
 import org.encog.neural.pattern.FeedForwardPattern;
+import org.encog.neural.pattern.JordanPattern;
 
 /**
- * Implement an Elman style neural network with Encog. This network attempts to
+ * Implement an Jordan style neural network with Encog. This network attempts to
  * predict the next value in an XOR sequence, taken one at a time. A regular
  * feedforward network would fail using a single input neuron for this task. The
- * internal state stored by an Elman neural network allows better performance.
- * Elman networks are typically used for temporal neural networks. An Elman
- * network has a single context layer connected to the hidden layer.
+ * internal state stored by an Jordan neural network allows better performance.
  *
- * @author jeff
+ * This example does not perform very well and is provided mainly as a contrast to
+ * the ExlmanXOR.  There is only one context neuron, because there is only one output
+ * neuron.  This network does not perform as well as the Elman for XOR.
+ *
+ * Jordan is better suited to a larger array of output neurons.
  *
  */
-public class ElmanXOR {
+public class JordanXOR {
 
-    static BasicNetwork createElmanNetwork() {
-        // construct an Elman type network
-        ElmanPattern pattern = new ElmanPattern();
+    static BasicNetwork createJordanNetwork() {
+        // construct an Jordan type network
+        JordanPattern pattern = new JordanPattern();
         pattern.setActivationFunction(new ActivationSigmoid());
         pattern.setInputNeurons(1);
-        pattern.addHiddenLayer(6);
+        pattern.addHiddenLayer(2);
         pattern.setOutputNeurons(1);
         return (BasicNetwork)pattern.generate();
     }
@@ -66,7 +68,7 @@ public class ElmanXOR {
         FeedForwardPattern pattern = new FeedForwardPattern();
         pattern.setActivationFunction(new ActivationSigmoid());
         pattern.setInputNeurons(1);
-        pattern.addHiddenLayer(6);
+        pattern.addHiddenLayer(2);
         pattern.setOutputNeurons(1);
         return (BasicNetwork)pattern.generate();
     }
@@ -76,22 +78,20 @@ public class ElmanXOR {
         final TemporalXOR temp = new TemporalXOR();
         final MLDataSet trainingSet = temp.generate(120);
 
-        final BasicNetwork elmanNetwork = ElmanXOR.createElmanNetwork();
-        final BasicNetwork feedforwardNetwork = ElmanXOR
+        final BasicNetwork jordanNetwork = JordanXOR.createJordanNetwork();
+        final BasicNetwork feedforwardNetwork = JordanXOR
                 .createFeedforwardNetwork();
 
-        final double elmanError = ElmanXOR.trainNetwork("Elman", elmanNetwork,
+        final double jordanError = JordanXOR.trainNetwork("Jordan", jordanNetwork,
                 trainingSet);
-        final double feedforwardError = ElmanXOR.trainNetwork("Feedforward",
+        final double feedforwardError = JordanXOR.trainNetwork("Feedforward",
                 feedforwardNetwork, trainingSet);
 
-        System.out.println("Best error rate with Elman Network: " + elmanError);
+        System.out.println("Best error rate with Jordan Network: " + jordanError);
         System.out.println("Best error rate with Feedforward Network: "
                 + feedforwardError);
         System.out
-                .println("Elman should be able to get into the 10% range,\nfeedforward should not go below 25%.\nThe recurrent Elment net can learn better in this case.");
-        System.out
-                .println("If your results are not as good, try rerunning, or perhaps training longer.");
+                .println("Jordan will perform only marginally better than feedforward.\nThe more output neurons, the better performance a Jordan will give.");
 
         Encog.getInstance().shutdown();
     }
@@ -103,12 +103,12 @@ public class ElmanXOR {
         final MLTrain trainAlt = new NeuralSimulatedAnnealing(
                 network, score, 10, 2, 100);
 
-        final MLTrain trainMain = new Backpropagation(network, trainingSet,0.000001, 0.0);
+        final MLTrain trainMain = new Backpropagation(network, trainingSet,0.00001, 0.0);
 
         final StopTrainingStrategy stop = new StopTrainingStrategy();
         trainMain.addStrategy(new Greedy());
         trainMain.addStrategy(new HybridStrategy(trainAlt));
-        trainMain.addStrategy(stop);
+        //trainMain.addStrategy(stop);
 
         int epoch = 0;
         while (!stop.shouldStop()) {

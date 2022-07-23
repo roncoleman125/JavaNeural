@@ -1,4 +1,4 @@
-package jan.mnist;
+package neural.mnist;
 
 /**
  * Interface to load the MNIST data.

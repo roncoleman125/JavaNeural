@@ -1,4 +1,4 @@
-package jan.mnist;
+package neural.mnist;
 
 /**
  * Container of MNIST digits
