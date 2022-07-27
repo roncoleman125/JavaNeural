@@ -6,6 +6,7 @@ package neural.mnist;
  * @author Ron.Coleman
  */
 public interface IMLoader {
+    record Normal(double[][] pixels, double[][] labels) {}
     ////////////////
     // TODO: Add a constructor which takes the pixel and label paths.
     ////////////////
@@ -33,4 +34,10 @@ public interface IMLoader {
      * @return Checksum
      */
     public long getChecksum();
+
+    /**
+     * Normalizes the data.
+     * @return Normalized data
+     */
+    public Normal normalize();
 }
