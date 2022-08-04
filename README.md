@@ -1,6 +1,5 @@
-# Xoriris
-*Xoriris* is a third generation project for introducing Java AI.
-
+# Java<span style="color:blue;font">*Neural*</span>
+JavaNeural is a skeletal project for developing AI applications based on Java, the Encog framework, and the artificial neural network.
 ![](https://badgen.net/badge/Java/1.16/FF0000?icon=github)
 ![](https://badgen.net/badge/Encog/3.4/6E86FF?icon=github)
 ![](https://badgen.net/badge/OpenNLP/1.9.3/1ED760)

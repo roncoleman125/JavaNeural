@@ -12,7 +12,7 @@ public interface IMLoader {
     ////////////////
 
     /**
-     * Gets the pixel and label data in row-major order.
+     * Gets the pixel and label data in row-major order from their respective files.
      * @return Data in row-major order.
      */
     public MDigit[] load();
@@ -30,7 +30,7 @@ public interface IMLoader {
     public int getLabelsMagic();
 
     /**
-     * Gets the checksum.
+     * Gets the checksum over the pixels <i>only</i>.
      * @return Checksum
      */
     public long getChecksum();
