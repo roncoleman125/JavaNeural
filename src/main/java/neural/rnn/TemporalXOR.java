@@ -39,8 +39,12 @@ public class TemporalXOR {
     /**
      * 1 xor 0 = 1, 0 xor 0 = 0, 0 xor 1 = 1, 1 xor 1 = 0
      */
-    public static final double[] SEQUENCE = { 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
-            0.0, 1.0, 1.0, 1.0, 1.0, 0.0 };
+    public static final double[] SEQUENCE = {
+            1.0, 0.0, 1.0,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 1.0,
+            1.0, 1.0, 0.0
+    };
 
     private double[][] input;
     private double[][] ideal;

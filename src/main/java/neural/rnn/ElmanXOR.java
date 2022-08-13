@@ -23,6 +23,7 @@ package neural.rnn;
  * and trademarks visit:
  * http://www.heatonresearch.com/copyright
  */
+import neural.util.EncogHelper;
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
 import org.encog.ml.CalculateScore;
@@ -82,12 +83,12 @@ public class ElmanXOR {
 
         final double elmanError = ElmanXOR.trainNetwork("Elman", elmanNetwork,
                 trainingSet);
-        final double feedforwardError = ElmanXOR.trainNetwork("Feedforward",
-                feedforwardNetwork, trainingSet);
+//        final double feedforwardError = ElmanXOR.trainNetwork("Feedforward",
+//                feedforwardNetwork, trainingSet);
 
         System.out.println("Best error rate with Elman Network: " + elmanError);
-        System.out.println("Best error rate with Feedforward Network: "
-                + feedforwardError);
+//        System.out.println("Best error rate with Feedforward Network: "
+//                + feedforwardError);
         System.out
                 .println("Elman should be able to get into the 10% range,\nfeedforward should not go below 25%.\nThe recurrent Elment net can learn better in this case.");
         System.out
@@ -117,6 +118,9 @@ public class ElmanXOR {
                     + " Error:" + trainMain.getError());
             epoch++;
         }
+
+        EncogHelper.report(trainingSet,network);
+
         return trainMain.getError();
     }
 }
