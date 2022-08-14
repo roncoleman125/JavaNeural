@@ -3,7 +3,13 @@ package neural.util;
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataPair;
 import org.encog.ml.data.MLDataSet;
+import org.encog.ml.genetic.genome.DoubleArrayGenome;
 import org.encog.neural.networks.BasicNetwork;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class EncogHelper {
     /** Error tolerance: 1% */
@@ -154,6 +160,42 @@ public class EncogHelper {
             System.out.println("--- CONVERGED!");
         else if((sameExceeded || epoch > MAX_EPOCHS) && done)
             System.out.println("--- DID NOT CONVERGE!");
+    }
+
+    /**
+     * Decodes double-array genome as a string.
+     * @param genome Genome
+     * @return String
+     */
+    public static String asString(DoubleArrayGenome genome) {
+        String s = "";
+
+        double[] ws = genome.getData();
+
+        for (double w : ws)
+            s += String.format("%7.3f", w) + " ";
+
+        return s;
+    }
+
+    /**
+     * Deep copies an object.
+     * @param object Serializabl bbject
+     * @param <T>    Object type.
+     * @return Specified type T
+     */
+    public static <T> T deepCopy(T object) {
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(object);
+            ByteArrayInputStream bais = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+            ObjectInputStream objectInputStream = new ObjectInputStream(bais);
+            return (T) objectInputStream.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
 
