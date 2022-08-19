@@ -1,0 +1,61 @@
+C:\Users\ron.coleman\.jdks\openjdk-18.0.1.1\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.3\lib\idea_rt.jar=64894:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.3\bin" -Dfile.encoding=UTF-8 -classpath C:\marist\JavaNeural\target\classes;C:\Users\ron.coleman\.m2\repository\de\unknownreality\dataframe\0.7.6\dataframe-0.7.6.jar;C:\Users\ron.coleman\.m2\repository\org\antlr\antlr4-runtime\4.7.2\antlr4-runtime-4.7.2.jar;C:\Users\ron.coleman\.m2\repository\org\slf4j\slf4j-api\1.7.28\slf4j-api-1.7.28.jar;C:\Users\ron.coleman\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\ron.coleman\.m2\repository\org\encog\encog-core\3.4\encog-core-3.4.jar;C:\Users\ron.coleman\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\ron.coleman\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\ron.coleman\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar neural.sunspot.PredictSunspot
+Epoch #1 Error:0.5115446994281578
+Epoch #2 Error:0.5106764375415215
+Epoch #3 Error:0.5066989494934542
+Epoch #4 Error:0.4801641929720331
+Epoch #5 Error:0.2618364176932129
+Epoch #6 Error:0.04287704702956729
+Epoch #7 Error:0.24907570619187772
+Epoch #8 Error:0.04859315196714418
+Epoch #9 Error:0.05144293232720476
+Epoch #10 Error:0.048589999031525576
+Epoch #11 Error:0.030042380243607104
+Epoch #12 Error:0.04730090707620817
+Epoch #13 Error:0.02965582878186189
+Epoch #14 Error:0.02985821811363465
+Epoch #15 Error:0.029504546007631017
+Epoch #16 Error:0.027077806352828058
+Epoch #17 Error:0.02582249390636464
+Epoch #18 Error:0.025068720380708683
+Epoch #19 Error:0.02398135821946872
+Epoch #20 Error:0.022863912123923226
+Epoch #21 Error:0.021535121680948524
+Epoch #22 Error:0.020167996365715386
+Epoch #23 Error:0.01875295053735485
+Epoch #24 Error:0.017367099070229857
+Epoch #25 Error:0.016112500954864054
+Epoch #26 Error:0.01651132103376449
+Epoch #27 Error:0.015492519084408244
+Epoch #28 Error:0.01558839053772819
+Epoch #29 Error:0.014644605771393863
+Epoch #30 Error:0.0138676693183392
+Epoch #31 Error:0.01303659582702293
+Epoch #32 Error:0.012178301336678996
+Epoch #33 Error:0.011339306183753515
+Epoch #34 Error:0.010556341232486685
+Epoch #35 Error:0.010999455725670506
+Epoch #36 Error:0.010433261922945141
+Epoch #37 Error:0.010315521687800044
+Epoch #38 Error:0.009941260212817254
+Year	Actual	Predict	Closed Loop Predict
+1960	0.5723	0.5336	0.5336
+1961	0.3267	0.3118	0.3035
+1962	0.2577	0.1861	0.1836
+1963	0.2173	0.1550	0.1483
+1964	0.1429	0.1543	0.1497
+1965	0.1635	0.1792	0.1825
+1966	0.2977	0.2680	0.2829
+1967	0.4946	0.4416	0.4574
+1968	0.5455	0.5836	0.5794
+1969	0.5438	0.5978	0.6051
+1970	0.5395	0.5280	0.5358
+1971	0.3801	0.3807	0.3761
+1972	0.3898	0.2470	0.2429
+1973	0.2598	0.2012	0.1740
+1974	0.2451	0.1637	0.1541
+1975	0.1652	0.1657	0.1548
+1976	0.1530	0.1796	0.1836
+1977	0.2148	0.2386	0.2701
+1978	0.4891	0.3500	0.3955
+
+Process finished with exit code 0

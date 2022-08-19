@@ -147,7 +147,7 @@ public class MultiSunspot {
 	 * @throws MalformedURLException
 	 */
 	public static File downloadSunSpotData() throws MalformedURLException {
-		File rawFile = new File(MYDIR, "sunspots.csv");
+		File rawFile = new File(MYDIR, "data/sunspots.csv");
 
 		// Step 1. Download sunspot data from NASA.
 		if (rawFile.exists()) {
@@ -158,7 +158,8 @@ public class MultiSunspot {
 					+ rawFile.getPath());
 			BotUtil.downloadPage(
 					new URL(
-							"http://solarscience.msfc.nasa.gov/greenwch/spot_num.txt"),
+//							"http://solarscience.msfc.nasa.gov/greenwch/spot_num.txt"),
+							 "https://solarscience.msfc.nasa.gov/greenwch/spot_num.txt"),
 					rawFile);
 		}
 		return rawFile;
@@ -166,6 +167,7 @@ public class MultiSunspot {
 	
 	public static TemporalMLDataSet createTraining(File rawFile) {
 		TemporalMLDataSet trainingData = initDataSet();
+		String s = rawFile.toString();
 		ReadCSV csv = new ReadCSV(rawFile.toString(), true, ' ');
 		while (csv.next()) {
 			int year = csv.getInt(0);
