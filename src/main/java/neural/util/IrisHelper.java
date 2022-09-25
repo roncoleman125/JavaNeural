@@ -118,15 +118,15 @@ public class IrisHelper {
         int numCols = frame.getColumns().size();
         int numRows = frame.getRows().size();
 
-        observations = new double[numCols][numRows];
+        observations = new double[numRows][numCols];
 
-        IntStream.range(0, numCols).forEach(colno -> {
-            String name = COL_NAMES[colno];
-            DataFrameColumn col = frame.getColumn(name);
-            IntStream.range(0, numRows).forEach(rowno -> {
-                DataRow row = frame.getRow(rowno);
+        IntStream.range(0, numRows).forEach(rowno -> {
+            DataRow row = frame.getRow(rowno);
+            IntStream.range(0, numCols).forEach(colno -> {
+                String name = COL_NAMES[colno];
+                DataFrameColumn col = frame.getColumn(name);
                 Double cell = row.get(colno,Double.class);
-                observations[colno][rowno] = cell;
+                observations[rowno][colno] = cell;
             });
         });
     }
